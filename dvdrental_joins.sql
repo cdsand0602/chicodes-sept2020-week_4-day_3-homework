@@ -31,13 +31,15 @@ ORDER BY SUM(amount) DESC
 
 --4. List all customers that live in Nepal (use the city
 --table)
-SELECT first_name,last_name,city
+SELECT customer.first_name,customer.last_name,country
 FROM customer
-FULL JOIN address
+INNER JOIN address
 ON customer.address_id = address.address_id
-FULL JOIN city
+INNER JOIN city
 ON address.city_id = city.city_id
-WHERE city = 'Nepal';
+INNER JOIN country
+ON city.country_id = country.country_id
+WHERE country = 'Nepal';
 
 --5. Which staff member had the most
 --transactions?
